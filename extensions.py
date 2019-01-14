@@ -35,6 +35,9 @@ class ExtendedStr(str):
         for x in self:
             value.insert(0, x)
         return ''.join([x for x in value])
+    
+    def remove_character(self, char):
+        return ''.join([x for x in self if x != char])
 
 class ExtendedList(list):
     pass
