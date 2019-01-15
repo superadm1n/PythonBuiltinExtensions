@@ -52,7 +52,7 @@ class ExtendedList(list):
             for x in self:
                 if type(x) != dict:
                     raise TypeError('This method will only run on a list of dictionaries! Your list contains a {}'.format(type(x).__name__))
-            return next((item for item in ssh.show_vlan() if item[key] == desired_value), None)
+            return next((item for item in self if item[key] == desired_value), None)
 
 class ExtendedDict(dict):
     pass
