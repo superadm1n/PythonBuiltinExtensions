@@ -40,7 +40,19 @@ class ExtendedStr(str):
         return ''.join([x for x in self if x != char])
 
 class ExtendedList(list):
-    pass
+    
+        def pluck_dict(self, key, desired_value):
+            '''
+            This method will only work if the list is a list of dictionaries, the list can not contain anything but dictionaries or it will throw
+            a type error.
+            :param key: Key in the dictionary to search on
+            :param desired_value: Value that the key should have to be selected.
+            :return: dictionary from list.
+            '''
+            for x in self:
+                if type(x) != dict:
+                    raise TypeError('This method will only run on a list of dictionaries! Your list contains a {}'.format(type(x).__name__))
+            return next((item for item in ssh.show_vlan() if item[key] == desired_value), None)
 
 class ExtendedDict(dict):
     pass
