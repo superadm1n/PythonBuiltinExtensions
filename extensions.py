@@ -41,18 +41,32 @@ class ExtendedStr(str):
 
 class ExtendedList(list):
     
-        def pluck_dict(self, key, desired_value):
-            '''
-            This method will only work if the list is a list of dictionaries, the list can not contain anything but dictionaries or it will throw
-            a type error.
-            :param key: Key in the dictionary to search on
-            :param desired_value: Value that the key should have to be selected.
-            :return: dictionary from list.
-            '''
-            for x in self:
-                if type(x) != dict:
-                    raise TypeError('This method will only run on a list of dictionaries! Your list contains a {}'.format(type(x).__name__))
-            return next((item for item in self if item[key] == desired_value), None)
+    def pluck_dict(self, key, desired_value):
+        '''
+        This method will only work if the list is a list of dictionaries, the list can not contain anything but dictionaries or it will throw
+        a type error.
+        :param key: Key in the dictionary to search on
+        :param desired_value: Value that the key should have to be selected.
+        :return: dictionary from list.
+        '''
+        for x in self:
+            if type(x) != dict:
+                raise TypeError('This method will only run on a list of dictionaries! Your list contains a {}'.format(type(x).__name__))
+        return [item for item in self if item[key] == desired_value]
+
+    def pluck_list(self, index, desired_value):
+        '''
+        This method will only work if the list is a list of lists, the list can not contain anything but lists or it will throw
+        a type error.
+        :param key: Key in the dictionary to search on
+        :param desired_value: Value that the key should have to be selected.
+        :return: dictionary from list.
+        '''
+        for x in self:
+            if type(x) != list:
+                raise TypeError('This method will only run on a list of lists! Your list contains a {}'.format(type(x).__name__))
+        return [item for item in self if item[index] == desired_value]
+
 
 class ExtendedDict(dict):
     pass
