@@ -71,3 +71,7 @@ class ExtendedList(list):
 class ExtendedDict(dict):
     pass
 
+class ExtendedInt(int):
+    
+    def percentage(self, percent):
+        return(self/100) * percent
